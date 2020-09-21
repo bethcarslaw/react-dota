@@ -1,0 +1,21 @@
+@import 'assets/styles/variables.scss';
+
+.rd-box {
+    border-radius: 5px;
+    background: $color__primary;
+    max-width: 500px;
+    border: 1px solid rgba($color__white, 0.05);
+    &__title {
+        padding: 20px;
+        border-bottom: 1px solid rgba($color__white, 0.05);
+        > div {
+            display: flex;
+            img {
+                margin-right: 20px;
+            }
+        }
+    }
+    &__content {
+        padding: 20px;
+    }
+}

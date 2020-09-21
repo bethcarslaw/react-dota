@@ -26,7 +26,8 @@ const Heroes: FunctionComponent<Props> = ({ filter }) => {
             {filter && (
                 <div className="rd-heroes-page__search-results">
                     <h2>
-                        {heroes.length} Search Results for: {filter}
+                        {heroes.length} Search result
+                        {heroes.length > 1 ? 's' : ''} for: {filter}
                     </h2>
                     <Link to="/heroes">Clear Search Criteria</Link>
                 </div>
