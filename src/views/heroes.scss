@@ -1,0 +1,10 @@
+.rd-heroes-page {
+    &__search-results {
+        display: block;
+        text-align: center;
+        padding: 50px 0;
+        a {
+            color: white;
+        }
+    }
+}

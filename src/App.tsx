@@ -6,68 +6,101 @@ import Search from './components/search/search'
 import './assets/styles/root.scss'
 import { CSSTransition } from 'react-transition-group'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-    getHeroStats,
-    selectFetchingHeroes,
-    setHeroFilter,
-} from 'reducers/heroes'
+import { getHeroStats, selectFetchingHeroes } from 'reducers/heroes'
 import Home from './views/home'
 import Hero from './views/hero'
+import Heroes from './views/heroes'
 import './App.scss'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import {
+    Switch,
+    Route,
+    Link,
+    NavLink,
+    Redirect,
+    useHistory,
+} from 'react-router-dom'
+import { useQuery } from './util/custom-hooks'
 
 function App() {
     const loading = useSelector(selectFetchingHeroes)
     const dispatch = useDispatch()
+    const query = useQuery()
+    const history = useHistory()
     const nodeRef = React.useRef(null)
 
     useEffect(() => {
         dispatch(getHeroStats())
     }, [dispatch])
 
-    const handleSearch = (e: any) => {
-        dispatch(setHeroFilter(e.target.value))
+    const handleSearch = (filter: string) => {
+        if (filter) {
+            history.push(`/heroes?name=${filter}`)
+        }
     }
 
     return (
-        <Router>
-            <div className="react-dota">
-                <Header
-                    left={
-                        <div>
-                            <Link to="/">
-                                <img src={logo} alt="React Dota" />
-                            </Link>
-                        </div>
-                    }
-                    right={
-                        <Search
-                            placeholder={'Search heroes...'}
-                            onSearchChange={handleSearch}
-                        />
-                    }
-                />
-                <Switch>
-                    <Route exact path="/">
-                        <Home />
-                    </Route>
+        <div className="react-dota">
+            <Header
+                left={
+                    <div className="rd-nav">
+                        <Link to="/">
+                            <img src={logo} alt="React Dota" />
+                        </Link>
+                        <nav className="rd-nav__items">
+                            <NavLink
+                                to="/"
+                                className="rd-nav__item"
+                                activeClassName="rd-nav__item--active"
+                                exact
+                            >
+                                Home
+                            </NavLink>
+                            <NavLink
+                                to="/heroes"
+                                className="rd-nav__item"
+                                activeClassName="rd-nav__item--active"
+                                exact
+                            >
+                                Heroes
+                            </NavLink>
+                        </nav>
+                    </div>
+                }
+                right={
+                    <Search
+                        placeholder={'Search heroes...'}
+                        onSearchSubmit={handleSearch}
+                    />
+                }
+            />
+            <Switch>
+                <Route exact path="/">
+                    <Home />
+                </Route>
 
-                    <Route path="/heroes/:id?">
-                        <Hero />
-                    </Route>
-                </Switch>
-                <CSSTransition
-                    in={loading}
-                    timeout={600}
-                    classNames="fade"
-                    appear
-                    unmountOnExit
-                    nodeRef={nodeRef}
-                >
-                    <Loader />
-                </CSSTransition>
-            </div>
-        </Router>
+                <Route exact path="/heroes">
+                    <Heroes filter={query.get('name')} />
+                </Route>
+
+                <Route path="/heroes/:id?">
+                    <Hero />
+                </Route>
+
+                <Route path="*">
+                    <Redirect to="/"></Redirect>
+                </Route>
+            </Switch>
+            <CSSTransition
+                in={loading}
+                timeout={600}
+                classNames="fade"
+                appear
+                unmountOnExit
+                nodeRef={nodeRef}
+            >
+                <Loader />
+            </CSSTransition>
+        </div>
     )
 }
 
