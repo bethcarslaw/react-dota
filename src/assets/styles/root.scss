@@ -1,0 +1,21 @@
+@import './variables.scss';
+@import '~normalize.css';
+@import './transitions.scss';
+
+html {
+    height: 100vh;
+}
+body {
+    background: $color__primary;
+    font-family: $font;
+    color: $font--color;
+    min-height: 100%;
+}
+
+.react-dota {
+    position: relative;
+    display: block;
+    height: 100vh;
+    width: 100%;
+    overflow: auto;
+}

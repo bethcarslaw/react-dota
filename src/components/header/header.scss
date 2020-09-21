@@ -1,0 +1,30 @@
+@import 'assets/styles/variables.scss';
+
+.rd-header {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    width: 100%;
+    align-items: stretch;
+    z-index: 9999;
+    position: relative;
+    background: $color__primary;
+    &__section {
+        display: flex;
+        align-content: center;
+    }
+
+    &__left {
+        padding: 15px;
+
+        img {
+            max-height: 100%;
+            width: auto;
+        }
+    }
+
+    &__right {
+        width: 100%;
+        max-width: 500px;
+    }
+}

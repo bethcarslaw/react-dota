@@ -1,0 +1,7 @@
+.react-dota {
+    display: flex;
+    flex-direction: column;
+    &__content {
+        flex: 1;
+    }
+}

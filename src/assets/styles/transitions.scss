@@ -1,0 +1,38 @@
+// .fade {
+//     &-enter {
+//         opacity: 0.1;
+
+//         &-active {
+//             opacity: 1;
+//             transition: opacity 300ms ease-in;
+//         }
+//     }
+
+//     &-leave {
+//         opacity: 1;
+
+//         &-active {
+//             opacity: 0.01;
+//             transition: opacity 300ms ease-in;
+//         }
+//     }
+// }
+
+.fade {
+    &-enter {
+        opacity: 0;
+        &-active,
+        &-done {
+            opacity: 1;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+    &-exit {
+        opacity: 1;
+        &-active,
+        &-done {
+            opacity: 0;
+            transition: all 0.2s 0.4s ease-in-out;
+        }
+    }
+}

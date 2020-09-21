@@ -1,0 +1,16 @@
+.rd-grid-50-4 {
+    display: grid;
+    overflow: auto;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    &__item {
+        &:nth-child(5n + 1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        > div {
+            height: 100%;
+        }
+    }
+}
