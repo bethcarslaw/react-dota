@@ -25,10 +25,17 @@ const Home: FunctionComponent = () => {
                         icon={`${process.env.PUBLIC_URL}/images/heroes/icons/${hero.hero_id}.png`}
                         title={hero.localized_name}
                     >
-                        <img
-                            src={normalizeAttribute(hero.primary_attr)?.icon}
-                            alt={normalizeAttribute(hero.primary_attr)?.name}
-                        />
+                        <div>
+                            <img
+                                src={
+                                    normalizeAttribute(hero.primary_attr)?.icon
+                                }
+                                alt={
+                                    normalizeAttribute(hero.primary_attr)?.name
+                                }
+                            />
+                            <span>{hero.attack_type}</span>
+                        </div>
                     </FlashCard>
                 </Card>
             ))}

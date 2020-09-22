@@ -3,14 +3,21 @@
 .rd-box {
     border-radius: 5px;
     background: $color__primary;
-    max-width: 500px;
     border: 1px solid rgba($color__white, 0.05);
     &__title {
         padding: 20px;
         border-bottom: 1px solid rgba($color__white, 0.05);
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 0;
+        }
         > div {
             display: flex;
-            img {
+            > img {
                 margin-right: 20px;
             }
         }
