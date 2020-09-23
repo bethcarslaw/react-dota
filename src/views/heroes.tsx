@@ -62,7 +62,9 @@ const Heroes: FunctionComponent<Props> = ({ filter }) => {
     const heroes = useSelector((state: RootState) =>
         state.heroState.heroes.filter((hero) =>
             filter
-                ? hero.localized_name.toLocaleLowerCase().includes(filter)
+                ? hero.localized_name
+                      .toLocaleLowerCase()
+                      .includes(filter.toLocaleLowerCase())
                 : hero
         )
     )

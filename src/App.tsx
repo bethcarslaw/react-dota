@@ -37,6 +37,9 @@ function App() {
 
     const handleSearch = (filter: string) => {
         if (filter) {
+            if (showNav) {
+                setShowNav(false)
+            }
             history.push(`/heroes?name=${filter}`)
         }
     }
