@@ -1,7 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import heroReducer from 'reducers/heroes'
-//import counterReducer from 'reducers/counter'
-//import reducer from 'reducers'
 
 export const store = configureStore({
     reducer: {
