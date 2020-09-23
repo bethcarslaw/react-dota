@@ -1,17 +1,5 @@
 @import '~sass-flex-mixin/_flex';
 
-$grid-columns: 12 !default;
-
-$gutter-width: 1rem !default;
-
-$outer-margin: 2rem !default;
-
-$breakpoints: sm 40em 38rem, md 58em 57rem, lg 75em 71rem !default;
-$flexboxgrid-max-width: 1200px !default;
-
-$gutter-compensation: $gutter-width * 0.5 * -1;
-$half-gutter-width: $gutter-width * 0.5;
-
 .wrapper {
     box-sizing: border-box;
     max-width: $flexboxgrid-max-width;
@@ -36,6 +24,17 @@ $half-gutter-width: $gutter-width * 0.5;
 
     > div {
         margin-bottom: $gutter-width;
+    }
+
+    &--grow {
+        > div {
+            height: 100%;
+        }
+    }
+
+    &--collapse {
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 

@@ -12,3 +12,46 @@ $color__white: #f0f0f0;
 
 $font: 'Lato', sans-serif;
 $font--color: $color__white;
+
+// Grid
+
+$grid-columns: 12 !default;
+
+$gutter-width: 1rem !default;
+
+$outer-margin: 2rem !default;
+
+$breakpoints: sm 40em 38rem, md 58em 57rem, lg 75em 71rem !default;
+$flexboxgrid-max-width: 1200px !default;
+
+$gutter-compensation: $gutter-width * 0.5 * -1;
+$half-gutter-width: $gutter-width * 0.5;
+
+// To enable support for browsers that do not support @media queries,
+// (IE <= 8, Firefox <= 3, Opera <= 9) set $mq-responsive to false
+// Create a separate stylesheet served exclusively to these browsers,
+// meaning @media queries will be rasterized, relying on the cascade itself
+$mq-responsive: true;
+
+// Name your breakpoints in a way that creates a ubiquitous language
+// across team members. It will improve communication between
+// stakeholders, designers, developers, and testers.
+$mq-breakpoints: (
+    sm: 608px,
+    md: 912px,
+    lg: 1136px,
+    xl: 1440px,
+);
+
+// Define the breakpoint from the $mq-breakpoints list that should
+// be used as the target width when outputting a static stylesheet
+// (when $mq-responsive is set to 'false').
+$mq-static-breakpoint: desktop;
+
+// If you want to display the currently active breakpoint in the top
+// right corner of your site during development, add the breakpoints
+// to this list, ordered by width. For example: (mobile, tablet, desktop).
+$mq-show-breakpoints: (sm, md, lg, xl);
+
+// With webpack (and boilerplates such as create-react-app)
+@import '~sass-mq';

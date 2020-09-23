@@ -1,0 +1,14 @@
+@import 'assets/styles/variables.scss';
+
+.rd-text-truncate {
+    &__text {
+        overflow: hidden;
+        white-space: pre-wrap;
+    }
+
+    &__see {
+        color: $color__secondary;
+        font-weight: bold;
+        cursor: pointer;
+    }
+}

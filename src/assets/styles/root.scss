@@ -3,12 +3,16 @@
 @import './transitions.scss';
 @import './generic.scss';
 @import './grid.scss';
+@import '~react-vis/dist/style.css';
+@import './charts.scss';
+@import '~react-lazy-load-image-component/src/effects/opacity.css';
+@import './util.scss';
 
 html {
     height: 100vh;
 }
 body {
-    background: $color__primary;
+    background: $color__primary--dark;
     font-family: $font;
     color: $font--color;
     min-height: 100%;
@@ -20,4 +24,8 @@ body {
     height: 100vh;
     width: 100%;
     overflow: auto;
+}
+
+div {
+    box-sizing: border-box;
 }

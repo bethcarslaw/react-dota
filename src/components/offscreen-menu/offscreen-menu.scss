@@ -1,0 +1,17 @@
+@import 'assets/styles/variables';
+
+.rd-offscreen-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 60px;
+    background: rgba($color__primary, 1);
+    width: 100vw;
+    height: 100vh;
+    z-index: 9998;
+    overflow: hidden;
+    &__wrapper {
+        min-height: 100%;
+        overflow: auto;
+    }
+}

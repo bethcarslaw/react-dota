@@ -4,6 +4,7 @@ import './search.scss'
 interface Props {
     placeholder?: string
     onSearchSubmit?: any
+    className?: string
 }
 
 const Search = (props: Props) => {
@@ -30,8 +31,8 @@ const Search = (props: Props) => {
     return (
         <div
             className={`rd-search ${isFocused ? 'rd-search--focused' : ''} ${
-                value ? 'rd-search--has-value' : ''
-            }`}
+                props.className || ''
+            } ${value ? 'rd-search--has-value' : ''}`}
         >
             <input
                 className="rd-search__input"

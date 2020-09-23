@@ -31,6 +31,8 @@ export interface HeroStats extends Hero {
     '7_win': number
     '8_pick': number
     '8_win': number
+    null_pick: number
+    null_win: number
     base_health: number
     base_health_regen: number | null
     base_mana: number

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from './assets/images/reactdota.svg'
 import Loader from './components/loader/loader'
 import Header from './components/header/header'
@@ -20,6 +20,8 @@ import {
     useHistory,
 } from 'react-router-dom'
 import { useQuery } from './util/custom-hooks'
+import Burger from './components/burger/burger'
+import OffscreenMenu from './components/offscreen-menu/offscreen-menu'
 
 function App() {
     const loading = useSelector(selectFetchingHeroes)
@@ -27,6 +29,7 @@ function App() {
     const query = useQuery()
     const history = useHistory()
     const nodeRef = React.useRef(null)
+    const [showNav, setShowNav] = useState(false)
 
     useEffect(() => {
         dispatch(getHeroStats())
@@ -41,6 +44,7 @@ function App() {
     return (
         <div className="react-dota">
             <Header
+                className="rd-topbar"
                 left={
                     <div className="rd-nav">
                         <Link to="/">
@@ -67,10 +71,16 @@ function App() {
                     </div>
                 }
                 right={
-                    <Search
-                        placeholder={'Search heroes...'}
-                        onSearchSubmit={handleSearch}
-                    />
+                    <div className="display--flex rd-flex--end">
+                        <Search
+                            placeholder={'Search heroes...'}
+                            onSearchSubmit={handleSearch}
+                        />
+                        <Burger
+                            active={showNav}
+                            onClick={() => setShowNav(!showNav)}
+                        />
+                    </div>
                 }
             />
             <Switch>
@@ -100,6 +110,36 @@ function App() {
             >
                 <Loader />
             </CSSTransition>
+
+            {showNav && (
+                <OffscreenMenu>
+                    <Search
+                        placeholder={'Search heroes...'}
+                        onSearchSubmit={handleSearch}
+                        className="rd-margin--bottom"
+                    />
+                    <nav className="rd-mobile-menu">
+                        <NavLink
+                            to="/"
+                            className="rd-nav__item"
+                            activeClassName="rd-nav__item--active"
+                            onClick={() => setShowNav(!showNav)}
+                            exact
+                        >
+                            Home
+                        </NavLink>
+                        <NavLink
+                            to="/heroes"
+                            className="rd-nav__item"
+                            activeClassName="rd-nav__item--active"
+                            onClick={() => setShowNav(!showNav)}
+                            exact
+                        >
+                            Heroes
+                        </NavLink>
+                    </nav>
+                </OffscreenMenu>
+            )}
         </div>
     )
 }

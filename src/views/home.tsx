@@ -13,6 +13,7 @@ const Home: FunctionComponent = () => {
         _.sampleSize(state.heroState.heroes, 5)
     )
     const history = useHistory()
+
     return (
         <Grid className="react-dota__content">
             {heroes.map((hero) => (

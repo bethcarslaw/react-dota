@@ -7,12 +7,31 @@
     }
 }
 
+.rd-topbar {
+    .rd-search {
+        @include mq($until: md) {
+            display: none;
+        }
+    }
+
+    .rd-burger {
+        @include mq($from: md) {
+            display: none;
+        }
+    }
+}
+
 .rd-nav {
     display: flex;
     align-items: stretch;
     &__items {
+        margin-left: 20px;
         display: flex;
         align-items: stretch;
+
+        @include mq($until: md) {
+            display: none;
+        }
     }
 
     &__item {
@@ -41,5 +60,14 @@
                 background: $color__secondary;
             }
         }
+    }
+}
+
+.rd-mobile-menu {
+    padding: 20px;
+    .rd-nav__item {
+        margin: 0;
+        margin-bottom: 20px;
+        padding: 25px;
     }
 }

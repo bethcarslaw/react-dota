@@ -1,0 +1,22 @@
+.rd-hero-link {
+    > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+    }
+    &__image {
+        width: 70px;
+        height: 70px;
+        border-radius: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    &__text {
+        font-weight: bold;
+    }
+}

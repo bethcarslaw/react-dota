@@ -1,0 +1,17 @@
+.rd-hero-attribute {
+    text-align: center;
+    &__title {
+        margin: 10px 0;
+    }
+
+    img {
+        border-radius: 100%;
+        border: 4px solid transparent;
+    }
+
+    &--primary {
+        > img {
+            border: 4px solid white;
+        }
+    }
+}

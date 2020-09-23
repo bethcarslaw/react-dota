@@ -1,16 +1,43 @@
+@import 'assets/styles/variables';
+
 .rd-grid-50-4 {
     display: grid;
     overflow: auto;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-template-rows: auto;
+
     &__item {
+        display: none;
+
         &:nth-child(5n + 1) {
-            grid-column: span 2;
-            grid-row: span 2;
+            display: block;
         }
 
         > div {
             height: 100%;
+        }
+    }
+
+    @include mq($from: sm) {
+        grid-template-columns: repeat(2, 1fr);
+
+        &__item {
+            display: block;
+            &:nth-child(5n + 1) {
+                grid-column: span 2;
+                grid-row: span 2;
+            }
+        }
+    }
+
+    @include mq($from: lg) {
+        grid-template-columns: repeat(4, 1fr);
+
+        &__item {
+            &:nth-child(5n + 1) {
+                grid-column: span 2;
+                grid-row: span 2;
+            }
         }
     }
 }
